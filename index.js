@@ -1,16 +1,23 @@
 var counter = 0;
 const addBtn = document.getElementById("addBtn");
+const resetBtn = document.getElementById("resetBtn");
 const input = document.getElementById("inputField");
+const container = document.getElementById("toDoCon");
 
 addBtn.addEventListener("click", () => {
-  let container = document.getElementById("toDoCon");
   container.appendChild(createCheckBox(counter));
   container.appendChild(createLabel(input, counter));
   container.appendChild(document.createElement("br"));
   counter++;
 });
+resetBtn.addEventListener("click", () => {
+  container.innerHTML = "";
+});
 
 function createCheckBox(counter) {
+  if (input.value == "") {
+    return;
+  }
   let checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
   checkbox.setAttribute("id", "checkbox" + counter);
